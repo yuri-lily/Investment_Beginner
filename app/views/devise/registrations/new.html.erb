@@ -1,0 +1,54 @@
+<%= render "shared/header" %>
+
+<div class="form">
+  <div class="container">
+    <h2>Sign up</h2>
+    <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+     
+      <%= render 'shared/error_messages', model: f.object %>
+
+      <div class="field">
+        <%= f.label :name %><em>(8 characters maximum)</em><br>
+        <%= f.text_field :name, class:'login_signup_field', autofocus: true, maxlength: "8" %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :email %><br>
+        <%= f.email_field :email, class:'login_signup_field' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <P class='info-text'>※英字と数字の両方を含めて設定してください</p>
+        <%= f.password_field :password, class:'login_signup_field', autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br>
+        <%= f.password_field :password_confirmation, class:'login_signup_field', autocomplete: "off" %>
+      </div>
+
+      <div class="feild">
+        <%= f.label :age_id %><br>
+        <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class: 'login_signup_field'}) %>
+      </div>
+
+      <div class="feild">
+        <%= f.label :gender_id %><br>
+        <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class: 'login_signup_field'}) %>
+      </div>
+
+      <div class="feild">
+        <%= f.label :profile %><br>
+        <%= f.text_area :profile, class:'login_signup_field' %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class:'login_signup_btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>
