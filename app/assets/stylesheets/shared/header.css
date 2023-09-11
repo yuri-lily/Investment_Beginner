@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+.top-page-header {
+  width: 100vw;
+  padding: 2vh 15vw;
+}
+
+
+.header-item {
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 1vh 0;
+}
+
+.logo {
+  height: 80%;
+  width: 80%;
+  opacity: 85%;
+}
+.lists-right {
+  display: flex;
+  list-style: none;
+  align-items: flex-end;
+}
+
+.user-name {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: #333333;
+}
+
+.logout {
+  text-decoration: none;
+  color: #333333;
+}
+
+.login {
+  text-decoration: none;
+  line-height: 32px;
+  margin-right: 3vw;
+  color: #333333;
+}
+
+.sign-up {
+  text-decoration: none;
+  color: #333333;
+}

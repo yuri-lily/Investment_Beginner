@@ -1,0 +1,28 @@
+<%= render "shared/header" %>
+
+<div class="form">
+  <div class="container">
+
+    <div class='login-flash-message'>
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
+    </div>
+
+    <h2>Log in</h2>
+    <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, class:'login_signup_field', autofocus: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, class:'login_signup_field', autocomplete: "off" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Log in", class:'login_signup_btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>
