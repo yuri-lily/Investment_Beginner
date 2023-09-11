@@ -24,13 +24,18 @@ RSpec.describe Opinion, type: :model do
         @opinion.valid?
         expect(@opinion.errors.full_messages).to include("Brand is invalid.Please enter an alphabet of four letters or less")
       end
+      it 'brandが小文字では投稿できない' do
+        @opinion.brand = 'aaaa'
+        @opinion.valid?
+        expect(@opinion.errors.full_messages).to include("Brand is invalid.Please enter an alphabet of four letters or less")
+      end
       it 'brandがアルファベット以外では投稿できない' do
         @opinion.brand = 'ああああ'
         @opinion.valid?
         expect(@opinion.errors.full_messages).to include("Brand is invalid.Please enter an alphabet of four letters or less")
       end
       it 'brandが5文字以上では投稿できない' do
-        @opinion.brand = 'aaaaa'
+        @opinion.brand = 'AAAAA'
         @opinion.valid?
         expect(@opinion.errors.full_messages).to include("Brand is invalid.Please enter an alphabet of four letters or less")
       end

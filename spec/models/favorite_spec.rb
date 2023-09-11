@@ -24,13 +24,18 @@ RSpec.describe Favorite, type: :model do
         @favorite.valid?
         expect(@favorite.errors.full_messages).to include("Symbol is invalid.Please enter an alphabet of four letters or less")
       end
+      it 'symbolが小文字では登録できない' do
+        @favorite.symbol = 'aaaa'
+        @favorite.valid?
+        expect(@favorite.errors.full_messages).to include("Symbol is invalid.Please enter an alphabet of four letters or less")
+      end
       it 'symbolがアルファベット以外では登録できない' do
         @favorite.symbol = 'ああああ'
         @favorite.valid?
         expect(@favorite.errors.full_messages).to include("Symbol is invalid.Please enter an alphabet of four letters or less")
       end
       it 'symbolが5文字以上では登録できない' do
-        @favorite.symbol = 'aaaaa'
+        @favorite.symbol = 'AAAAA'
         @favorite.valid?
         expect(@favorite.errors.full_messages).to include("Symbol is invalid.Please enter an alphabet of four letters or less")
       end
