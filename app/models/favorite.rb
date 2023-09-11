@@ -1,7 +1,7 @@
 class Favorite < ApplicationRecord
   belongs_to :user
   with_options presence: true do
-    validates :symbol, format: { with: /\A[a-zA-Z]{1,4}\z/, message: "is invalid.Please enter an alphabet of four letters or less"}
+    validates :symbol, format: { with: /\A[A-Z]{1,4}\z/, message: "is invalid.Please enter an alphabet of four letters or less"}
   end
 
   def update_current_price
