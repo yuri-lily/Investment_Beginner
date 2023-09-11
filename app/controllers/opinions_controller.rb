@@ -113,7 +113,10 @@ class OpinionsController < ApplicationController
   end
 
   def set_params
-    @opinion = Opinion.find(params[:id])
+    @opinion = Opinion.find_by(id: params[:id])
+    unless @opinion
+      redirect_to root_path
+    end
   end
 
   def move_to_index

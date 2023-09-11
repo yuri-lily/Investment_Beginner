@@ -16,6 +16,9 @@ class CommentsController < ApplicationController
     if current_user == @comment.user
       @comment.destroy
       redirect_to opinion_path(@comment)
+      unless @comment
+        redirect_to opinions_path
+      end
     end
   end
 
@@ -26,7 +29,10 @@ class CommentsController < ApplicationController
   end
 
   def set_comment
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find_by(id: params[:id])
+    unless @comment
+      redirect_to root_path
+    end
   end
 
 end
